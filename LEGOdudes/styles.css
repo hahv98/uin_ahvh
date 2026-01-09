@@ -21,10 +21,12 @@ body {
 p    { font-size: 1rem; }
 h1   { margin: 0; padding: 0; max-width: 250px;
    a { display: inline-block; width: 100%; overflow: hidden; 
- img { width: 100%; height: auto; }}
-     }
+ img { width: 100%; min-width: 0; height: 55px; }}
+}
 h2   { font-size: 2.5rem; font-weight: 900; }
 h3   { font-size: 1.5rem; font-weight: 600; }
+
+
 
 /* MAIN CONTENT AREAS */
 #container {
@@ -37,4 +39,85 @@ h3   { font-size: 1.5rem; font-weight: 600; }
 
 .header{
     padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#cart-btn {
+    width: 70px;
+    background: transparent;
+    border: none;
+    position: relative;
+
+    div {
+        background: var(--red);
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        color: var(--white);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: -15px;
+        left: -10px;
+    }
+}
+
+nav {
+    background: var(--red);
+    color: var(--white);
+
+    a {
+        display: inline-block;
+        padding: 0.5rem;
+        text-transform: uppercase;
+        color: var(--white);
+        text-decoration: none;
+
+        &:hover {
+            background: var(--yellow);
+            color: var(--black);
+            box-shadow: inset 0 -5px 0 var(--black);
+        }
+    }
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    gap: 1rem;
+
+    h2 {
+        width: 100%;
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+    .prod-card {
+        max-width: calc(33% - 2rem);
+        background: var(--black);
+        color: var(--white);
+        padding: 1rem;
+        box-sizing: border-box;
+        border-bottom: 1rem solid var(--green);
+        margin-bottom: 1rem;
+
+        a { color: var(--yellow); text-decoration: none; }
+        img { width: 100%; }
+        h3 { margin: 0; text-transform: uppercase; }
+        p { margin: 0; margin-bottom: 5px; }
+        button { 
+            background: var(--green); 
+            color: var(--white);
+            font-family: "Rubik", sans-serif;
+            font-size: 1rem;
+            padding: 0.5rem 1rem;
+            border: none;
+        }
+    }
 }

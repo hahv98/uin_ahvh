@@ -29,5 +29,4 @@ function addToCart(prodid) {
     cart.push(prodid)
     console.log(cart)
     document.getElementById("cart-quantity").innerHTML = cart.length
-
 }

@@ -19,8 +19,38 @@ function fetchProd() {
 
     document.getElementById("prod-list").innerHTML = productHTML
 }
-
 fetchProd()
+
+//Generate Cart
+function showCart() {
+    //Unique products
+    let uniqueItems = new Set(cart)
+    let uniqueArr = [...uniqueItems]
+
+    //Control of amount pr. product
+    let cartItems = []
+    uniqueArr.map(item => {
+        cart.filter(i => i === item).length
+        cartItems.push({prodid: item, quantity: cart.filter(i => i === item).length})
+    })
+
+    //Go through cartItems to make HTML for cart & total sum
+    let cartHTML = ""
+    let totalSum = 0
+    cartItems.map(ci => {
+        //Get product info
+        let product = products.find(i => i.prodid === ci.prodid)
+        //Print HTML
+        cartHTML += 
+            `<tr>
+                <td class="title">${product.title}</td>
+                <td class="price">kr. ${product.price},-</td>
+                <td class="quantity">${ci.quantity}</td>
+                <td class="delete"><button>X</button></td>
+            </tr>`
+    })
+    document.getElementById("cart-items").innerHTML = cartHTML
+}
 
 
 // Add to Cart
@@ -29,4 +59,6 @@ function addToCart(prodid) {
     cart.push(prodid)
     console.log(cart)
     document.getElementById("cart-quantity").innerHTML = cart.length
+    //Update cartlist
+    showCart()
 }

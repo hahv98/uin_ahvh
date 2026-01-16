@@ -128,7 +128,7 @@ main {
 
 /* HANDLEVOGN */
 #cart {
-    max-width: 550px;
+    width: 550px;
     background: var(--black);
     border-left: 0.5rem solid var(--green);
     border-bottom: 0.5rem solid var(--green);

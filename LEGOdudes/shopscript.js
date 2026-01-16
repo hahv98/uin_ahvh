@@ -46,10 +46,33 @@ function showCart() {
                 <td class="title">${product.title}</td>
                 <td class="price">kr. ${product.price},-</td>
                 <td class="quantity">${ci.quantity}</td>
-                <td class="delete"><button>X</button></td>
+                <td class="delete">
+                    <button onClick="deleteFromCart(${product.prodid})">X</button>
+                </td>
             </tr>`
+        //Summarize total
+        totalSum += Number(product.price) * Number(ci.quantity)
     })
+    if(cart.length === 0) {
+        cartHTML += 
+        "<tr><td>Handlevognen er tom</td></tr>"
+    }
+
+    //Update HTML elements
     document.getElementById("cart-items").innerHTML = cartHTML
+    document.getElementById("total-sum").innerHTML = totalSum
+    document.getElementById("cart-quantity").innerHTML = cart.length
+}
+
+//Delete from Cart
+function deleteFromCart(prodid) {
+    let deleteIndex = cart.indexOf(prodid)
+    if(deleteIndex > -1) {
+        cart.splice(deleteIndex, 1)
+    }
+
+    //Update Cart-print
+    showCart()
 }
 
 
@@ -58,7 +81,7 @@ function addToCart(prodid) {
     console.log("Legg til produkt med id: " + prodid)
     cart.push(prodid)
     console.log(cart)
-    document.getElementById("cart-quantity").innerHTML = cart.length
+
     //Update cartlist
     showCart()
 }
